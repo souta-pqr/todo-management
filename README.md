@@ -1,7 +1,7 @@
 # Todo.txt & Tokaido チートシート
 
 ## bashrcの設定
-以下の設定を`~/.bashrc`に追加してください：
+以下の設定を`~/.bashrc`に追加した．
 
 ```bash
 # Todo.txt aliases and functions
