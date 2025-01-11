@@ -1,5 +1,52 @@
 # Todo.txt & Tokaido チートシート
 
+## bashrcの設定
+以下の設定を`~/.bashrc`に追加してください：
+
+```bash
+# Todo.txt aliases and functions
+alias t='todo.sh -d ~/.todo.cfg'
+
+# Basic commands
+alias ta='t add'
+alias tl='t ls'
+alias td='t do'
+alias tdel='t del'
+alias tp='t listproj'
+alias tc='t listcon'
+
+# Project specific
+alias tw='t ls +work'
+alias tr='t ls +research'
+alias tdev='t ls +development'
+alias tdoc='t ls +documentation'
+
+# Due date filters
+alias tdue='t ls due:'
+alias ttoday='t ls due:$(date +%Y-%m-%d)'
+alias tweek='t ls due:$(date -d "+7 days" +%Y-%m-%d)'
+
+# Complex functions
+function tadd() {
+   local task="$1"
+   local due_date="$2"
+   local project="${3:-work}"
+   t add "$task +$project due:$(date -d "$due_date" +%Y-%m-%d)"
+}
+
+function tpri() {
+   local task_num="$1"
+   local priority="${2:-A}"
+   t pri "$task_num" "$priority"
+}
+
+# Archive completed tasks
+alias tarchive='t archive'
+
+# Show task statistics
+alias tstats='t stats'
+```
+
 ## 基本コマンド
 | コマンド | 説明 |
 |----------|------|
